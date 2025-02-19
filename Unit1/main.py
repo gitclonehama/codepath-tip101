@@ -44,3 +44,23 @@ def todays_mood():
 todays_mood()
 
 
+"""
+Problem 3: Lunch Menu
+
+Understand:
+    - How do we pass a parameter to a function?
+    - How do we print a formatted message with an argument?
+
+Plan:
+    - Define a function `print_menu(menu)`
+    - Print "Lunch today is: " followed by the menu
+    - Call the function with an argument
+"""
+
+# Implement:
+def print_menu(menu):
+    print("Lunch today is: " + menu)
+
+print_menu("🍕")  # Change this to your lunch choice
+
+
