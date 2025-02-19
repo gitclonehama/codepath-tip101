@@ -171,3 +171,25 @@ numbers = [1, -2, -3, 4]
 print(flip_sign(numbers))
 
 
+"""
+Problem 9: Maximum Difference
+
+Understand:
+    - How do we find the min and max values in a list?
+    - How do we calculate the difference between two numbers?
+
+Plan:
+    - Define a function `max_difference(lst)` that takes a list parameter
+    - Find the minimum and maximum values
+    - Return their difference
+"""
+
+# Implement:
+def max_difference(lst):
+    return max(lst) - min(lst)
+
+# Test the function
+numbers = [5, 22, 8, 10, 2]
+print(max_difference(numbers))
+
+
