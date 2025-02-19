@@ -84,3 +84,23 @@ def sum(a, b):
 result = sum(13, 27)
 print(result * 2)
 
+
+"""
+Problem 5: Product of Two Integers
+
+Understand:
+    - How do we return the product of two numbers?
+    - How do we print the result?
+
+Plan:
+    - Define a function `product(a, b)` that returns the product
+    - Call the function with (22, 7) and print the result
+"""
+
+# Implement:
+def product(a, b):
+    return a * b
+
+print(product(22, 7))
+
+
