@@ -64,3 +64,23 @@ def print_menu(menu):
 print_menu("🍕")  # Change this to your lunch choice
 
 
+"""
+Problem 4: Sum of Two Integers
+
+Understand:
+    - How do we return the sum of two numbers?
+    - How do we double the result and print it?
+
+Plan:
+    - Define a function `sum(a, b)` that returns the sum
+    - Call the function with (13, 27)
+    - Multiply the result by 2 and print it
+"""
+
+# Implement:
+def sum(a, b):
+    return a + b
+
+result = sum(13, 27)
+print(result * 2)
+
