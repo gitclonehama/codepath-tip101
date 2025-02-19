@@ -127,3 +127,25 @@ test_list = ["squirtle", "gengar", "charizard", "pikachu"]
 print_list(test_list)
 
 
+"""
+Problem 7: Double List Values
+
+Understand:
+    - How do we modify each number in a list?
+    - How do we return a new list with modified values?
+
+Plan:
+    - Define a function `doubled(lst)` that takes a list parameter
+    - Create a new list with doubled values
+    - Return the new list
+"""
+
+# Implement:
+def doubled(lst):
+    return [num * 2 for num in lst]
+
+# Test the function
+numbers = [1, 2, 3]
+print(doubled(numbers))
+
+
