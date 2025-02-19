@@ -78,10 +78,10 @@ Plan:
 """
 
 # Implement:
-def sum(a, b):
+def add_numbers(a, b):
     return a + b
 
-result = sum(20, 8)
+result = add_numbers(20, 8)
 print(result * 2)   # Output 56
 
 
