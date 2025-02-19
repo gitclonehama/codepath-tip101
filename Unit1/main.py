@@ -61,7 +61,7 @@ Plan:
 def print_menu(menu):
     print("Lunch today is: " + menu)
 
-print_menu("🍕")  # Change this to your lunch choice
+print_menu("🍜")  # Change this to your lunch choice
 
 
 """
@@ -81,8 +81,8 @@ Plan:
 def sum(a, b):
     return a + b
 
-result = sum(13, 27)
-print(result * 2)
+result = sum(20, 8)
+print(result * 2)   # Output 56
 
 
 """
@@ -101,7 +101,7 @@ Plan:
 def product(a, b):
     return a * b
 
-print(product(22, 7))
+print(product(22, 7))   # Ouput: 154
 
 
 """
