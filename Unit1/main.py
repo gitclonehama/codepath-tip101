@@ -149,3 +149,25 @@ numbers = [1, 2, 3]
 print(doubled(numbers))
 
 
+"""
+Problem 8: Flip Number Signs
+
+Understand:
+    - How do we change the sign of a number?
+    - How do we create a new list with modified values?
+
+Plan:
+    - Define a function `flip_sign(lst)` that takes a list parameter
+    - Create a new list with flipped signs
+    - Return the new list
+"""
+
+# Implement:
+def flip_sign(lst):
+    return [-num for num in lst]
+
+# Test the function
+numbers = [1, -2, -3, 4]
+print(flip_sign(numbers))
+
+
