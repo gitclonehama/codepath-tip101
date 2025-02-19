@@ -104,3 +104,26 @@ def product(a, b):
 print(product(22, 7))
 
 
+"""
+Problem 6: Print List Items
+
+Understand:
+    - How do we iterate through items in a list?
+    - How do we print each item on a new line?
+
+Plan:
+    - Define a function `print_list(lst)` that takes a list parameter
+    - Loop through each item in the list
+    - Print each item
+"""
+
+# Implement:
+def print_list(lst):
+    for item in lst:
+        print(item)
+
+# Test the function
+test_list = ["squirtle", "gengar", "charizard", "pikachu"]
+print_list(test_list)
+
+
