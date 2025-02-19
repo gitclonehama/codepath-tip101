@@ -193,3 +193,27 @@ numbers = [5, 22, 8, 10, 2]
 print(max_difference(numbers))
 
 
+"""
+Problem 10: List Statistics
+
+Understand:
+    - How do we calculate the average of a list?
+    - How do we return multiple values from a function?
+
+Plan:
+    - Define a function `list_stats(lst)` that takes a list parameter
+    - Calculate the sum, average, and length of the list
+    - Return all three values as a tuple
+"""
+
+# Implement:
+def list_stats(lst):
+    total = sum(lst)
+    length = len(lst)
+    average = total / length
+    return (total, average, length)
+
+# Test the function
+numbers = [1, 2, 3, 4, 5]
+total, avg, length = list_stats(numbers)
+print(f"Sum: {total}, Average: {avg}, Length: {length}")
