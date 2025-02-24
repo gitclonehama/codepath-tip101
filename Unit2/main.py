@@ -188,12 +188,12 @@ Plan:
 # Implement
 def restock_inventory(current_inventory: dict, restock_list: dict):
     # Unpack restock_list
-    for item, amount in restock_list.values():
+    for item, amount in restock_list.items():
         # Check if item exists
         existing = current_inventory.get(item)
         # If item exists, increment its stock
         if existing:
-            current_inventory[existing] += amount
+            current_inventory[item] += amount
         # Item doesn't exist, so create and set amount to be restock value
         else:
             current_inventory[item] = amount
