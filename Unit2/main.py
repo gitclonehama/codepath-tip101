@@ -6,38 +6,46 @@
 """ 
 Problem 1: Subsequence
 
-
 Understand:
-    - input parameters lst (list of ints), sequence (list of ints)
-    - goal: determine if 'sequence' is a subsequence of 'lst'
-    - subsequence => set of numbers that appear in same relative order (not necessarily adjacent)
-    - True if sequence exists, False otherwise
+    - What inputs does the function need to handle?
+    - What defines a valid subsequence?
 
 Plan:
-    - have a pointer for sequence and lst
-    - loop through lst, incremting both pointers if they match
-    - after the loop is done, if we exhausted sequence, then return True
-    - if we are not at the end of sequence, return false
-
+    - Define function that takes lst and sequence parameters
+    - Track position in sequence while iterating through lst
+    - Return True if sequence is found, False otherwise
 """
-# Implement
 
+# Implement
 def is_subsequence(lst, sequence):
+    # Keep track of where we are in sequence
     seq_idx = 0
 
-    for i in range(len(lst)):
-
-        if seq_idx == (len(sequence) - 1):
-            return True
-
-        if lst[i] == sequence[seq_idx]:
+    # Loop through the list
+    for num in lst:
+        # If there is a match to what we are pointing at in sequence
+        if num == sequence[seq_idx]:
+            # Look at next number
             seq_idx += 1
+            # We must've matched all entries in sequence if idx is pointing one past it
+            if seq_idx == (len(sequence)):
+                return True
     
     return False
 
+# Test the function
 lst = [5, 1, 22, 25, 6, -1, 8, 10]
 sequence = [1, 6, -1, 10]
 print(is_subsequence(lst, sequence))    # Expected: True
+
+lst2 = [5, 1, 22, 25, -1, 6, 8, 10]
+sequence2 = [1, 6, -1, 10]
+print(is_subsequence(lst2, sequence2))    # Expected: False
+
+lst3 = [5, -1, 1, 22, -1, 25, 8, 6, 10, -1, 10]
+sequence3 = [1, 6, -1, 10]
+print(is_subsequence(lst3, sequence3))    # Expected: True
+
 
 """ 
 Problem 2:
