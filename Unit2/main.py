@@ -309,17 +309,61 @@ print('''\nExpected:
 
 
 """ 
-Problem 8:
+Problem 8: Highest Priority Task
 
 
 Understand:
-
+    - Given a dictionary tasks where keys are task names and values are int priorities
+    - removes the highest priority task from the dictionary and returns its name
+    - in case of multiple tasks with same prio, return first based alphabatically
 
 Plan:
-
-
+    - loop through dictoionary and unpack
+    - keep track of highest priority
+    - check if priority ==, check name for alphabat for tie breaker
+    - pop the task from the dict, return the key
 """
 # Implement
+def get_highest_priority_task(tasks: dict):
+    # Loop through and unpack key, value from tasks
+    currTask = ""
+    currPrio = 0
+    for task, priority in tasks.items():
+        # Compare current highest to priority, save if current task is higher
+        if priority > currPrio:
+            # New highest prio, save prio and task
+            currPrio = priority
+            currTask = task
+        elif priority == currPrio:
+            # Equal prio case, switch if task < alphabetically
+            currTask = task if task < currTask else currTask
+    
+    # Once done with loop, currTask is the task we want to pop
+    tasks.pop(currTask)
+    
+    # Return the name of the task that got removed
+    return currTask
+
+# Testing
+print("Testing Problem 8")
+tasks = {"task1": 8, "task2": 10, "task3": 9, "task4": 10, "task5": 7}
+perform_task = (get_highest_priority_task(tasks))
+print(perform_task)
+
+perform_task = (get_highest_priority_task(tasks))
+print(perform_task)
+
+perform_task = (get_highest_priority_task(tasks))
+print(perform_task)
+
+print(tasks)
+
+print('''\nExpected:
+task2
+task4
+task3
+{"task1": 8, "task5": 7}
+''')
 
 
 """ 
@@ -334,6 +378,7 @@ Plan:
 
 """
 # Implement
+
 
 
 """ 
