@@ -119,21 +119,55 @@ Value: squarepants""")
 
 
 """ 
-Problem 4:
+Problem 4: Keys Versus Values
 
 
 Understand:
-
+    - takes in a dictionary of key: value ints
+    - find sum of all keys, sum of all values
+    - return the name of the group that has higher sum
 
 Plan:
-
-
+    - loop through dictionary using .items()
+    - add up all values into seperate groups
+    - after done with loop, compare sums and announce winner
 """
 # Implement
+def keys_v_values(dictionary: dict):
+    # Keep track of sums seperately
+    keySum = 0
+    valSum = 0
 
+    # Unpack the dictionary keys and values
+    for key, val in dictionary.items():
+        keySum += key
+        valSum =+ val
+
+    # Out of loop, compare and print
+    if keySum == valSum:
+        return("balanced")
+    elif keySum > valSum:
+        return("keys")
+    else:
+        return("values")
+
+# Testing:
+print("\nTests Problem 4")
+dictionary1 = {1:10, 2:20, 3:30, 4:40, 5:50, 6:60}
+greater_sum = keys_v_values(dictionary1)
+print(greater_sum)
+
+dictionary2 = {100:10, 200:20, 300:30, 400:40, 500:50, 600:60}
+greater_sum = keys_v_values(dictionary2)
+print(greater_sum)
+print("""
+Expected:
+values
+keys
+""")
 
 """ 
-Problem 5:
+Problem 5: Restock Inventory
 
 
 Understand:
