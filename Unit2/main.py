@@ -4,14 +4,17 @@
 
 
 """ 
-Problem 1:
+Problem 1: Subsequence
 
 
 Understand:
-
+    - input parameters lst (list of ints), sequence (list of ints)
+    - goal: determine if 'sequence' is a subsequence of 'lst'
+    - subsequence => set of numbers that appear in same relative order (not necessarily adjacent)
+    - True if sequence exists, False otherwise
 
 Plan:
-
+    - 
 
 """
 # Implement
