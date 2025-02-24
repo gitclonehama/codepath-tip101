@@ -27,7 +27,7 @@ def is_subsequence(lst, sequence):
 
     for i in range(len(lst)):
 
-        if seq_idx >= len(sequence):
+        if seq_idx == (len(sequence) - 1):
             return True
 
         if lst[i] == sequence[seq_idx]:
