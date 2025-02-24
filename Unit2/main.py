@@ -191,11 +191,11 @@ def restock_inventory(current_inventory: dict, restock_list: dict):
     for item, amount in restock_list.items():
         # Check if item exists
         existing = current_inventory.get(item)
-        # If item exists, increment its stock
         if existing:
+            # If item exists, increment its stock
             current_inventory[item] += amount
-        # Item doesn't exist, so create and set amount to be restock value
         else:
+            # Item doesn't exist, so create and set amount to be restock value
             current_inventory[item] = amount
     
     # Return the updated dict
