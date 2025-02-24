@@ -52,16 +52,34 @@ Problem 2:
 
 
 Understand:
-
+    - What happens if you have different list lenghths?
+    - Are there any edge cases?
 
 Plan:
-
+    - Loop through range length of keys
+    - Assign a value to them at the same index
+    - Return the dictionary
 
 """
 # Implement
+def create_dictionary(keys, values):
+    result = dict()
+
+    # Loop through range of keys list len
+    for i in range(len(keys)):
+        # Add pair of key: value from the list for each i
+        result[keys[i]] = values[i]
+
+    return result
+
+# Testing:
+keys = ["peanut", "dragon", "star", "pop", "space"]
+values = ["butter", "fly", "fish", "corn", "ship"]
+print("Result:  ", create_dictionary(keys, values))  
+print('Expected: {"peanut": "butter", "dragon": "fly", "star": "fish", "pop": "corn", "space": "ship"}')
 
 
-""" 
+"""
 Problem 3:
 
 
