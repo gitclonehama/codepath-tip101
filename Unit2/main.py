@@ -412,14 +412,52 @@ print('''\nExpected:
 
 
 """ 
-Problem 10:
+Problem 10: Find Majority Element
 
 
 Understand:
-
-
+    - Take in a list of ints (elements) and find the majority element in the list
+    - Majority element = element that appears more than n/2 times *if n = len(elements)
+    - If no clear majority element, return None
+    - Using boyer moore algorithm
 Plan:
-
+    - Keep track of current element
+    - Loop through the list
+    - everytime we encounter an element that matches, increase the value of current element
+    - if its different, decrement
+    - check if the count is > n/2
 
 """
 # Implement
+def find_majority_element(elements: list[int]):
+
+    # Keep track of current elements (set to first element) and count
+    current = elements[0]
+    count = 1
+
+    # Loop through elements (starting index 1)
+    for element in elements[1:]:
+        
+        # Check if count is 0
+        if count == 0:
+            # Our base case, we assign new element and set count to 1
+            current = element
+            count = 1
+        elif element == current:
+            # Match, increment count
+            count += 1
+        else:
+            # No match, decrement count
+            count -= 1
+
+    # End of loop, check if count is > n/2:
+    verified_count = sum(1 for element in elements if element == current)
+    return current if verified_count > len(elements)//2 else None
+
+# Testing:
+print("\nTesting problem 10")
+elements = [2, 2, 1, 1, 1, 2, 2]
+print(find_majority_element(elements))
+print('''Expected:
+2
+''')
