@@ -214,7 +214,8 @@ restock_list = {
     "pears": 5
 }
 print(restock_inventory(current_inventory, restock_list))
-print('Expected: current_inventory = {"apples": 40,"bananas": 15,"oranges": 30,"pears": 5}')
+print('''Expected:
+{"apples": 40,"bananas": 15,"oranges": 30,"pears": 5}''')
 
 
 
