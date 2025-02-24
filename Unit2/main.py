@@ -220,17 +220,51 @@ print('''Expected:
 
 
 """ 
-Problem 6:
+Problem 6: Cast Vote
 
 
 Understand:
-
+    - Funtion Records a voote for a candidate in an election
+    - Param:
+        votes: dict that maps candidates to their current number of votes
+        candidate: represents the candidate the user would like to vote for
+                    if not exist, add them to the dictionary
+    - return the updated dictionary
 
 Plan:
-
+    - Go through votes
+    - check if string exists in votes
+    - if not, add it to dict and set value as 1 (their first vote)
+    - if it does, increment the value of key "candidate"
+    - return the updated dict
 
 """
 # Implement
+def cast_vote(votes: dict, candidate: str):
+    # check if candidate exists in votes dict
+    existing = votes.get(candidate)
+
+    if existing:
+        # Candidate exists in votes, increment votes
+        votes[candidate] += 1
+    else:
+        # Candidate does not exist in votes, so we create it and cast first vote
+        votes[candidate] = 1
+
+    # Return the updated dict
+    return votes
+
+print("\nTesting Problem 6")
+votes = {"Alice": 5, "Bob": 3}
+cast_vote(votes, "Alice")
+print(votes)
+cast_vote(votes, "Gina")
+print(votes)
+
+print('''\nExpected:
+{"Alice": 6, "Bob": 3}
+{"Alice": 6, "Bob": 3, "Gina": 1}
+''')
 
 
 """ 
