@@ -367,17 +367,47 @@ task3
 
 
 """ 
-Problem 9:
+Problem 9: Frequency Count
 
 
 Understand:
-
+    - A functioon that takes in list of ints (nums) and counts the occurances
+    - Return ints as keys and their occurances as values
 
 Plan:
-
+    - Create result dict
+    - Loop through the list of nums
+    - if nums exists in dict, increment occurance
+    - if not, create in dict and assign 1 (first occurance)
+    - return the result dict
 
 """
 # Implement
+def count_occurrences(nums: list[int]):
+    # Create result dict
+    result = dict()
+
+    # Loop through nums
+    for num in nums:
+        # Check if num exists in result dict
+        if result.get(num):
+            # num exists, increment it's value
+            result[num] += 1
+        else:
+            # num does not exist, create and set value = 1
+            result[num] = 1
+    
+    # Once loop is done, result is complete, return it
+    return result
+
+# Testing
+print("Testing problem 9")
+nums = [1, 2, 2, 3, 3, 3, 4]
+print(count_occurrences(nums))
+
+print('''\nExpected:
+{1: 1, 2: 2, 3: 3, 4: 1}
+''')
 
 
 
