@@ -268,17 +268,44 @@ print('''\nExpected:
 
 
 """ 
-Problem 7:
+Problem 7: Keys in Common
 
 
 Understand:
-
+    - Given dict1, and dict2, find all keys common, return a list of all common keys
 
 Plan:
-
+    - unpack all keys in dict1
+    - int he loop, check if the key exists in dict2
+    - if it exists, append key to result list
+    - return result list comprised of all common keys
 
 """
 # Implement
+def common_keys(dict1: dict, dict2: dict):
+    # Result list to append common keys
+    result = []
+
+    # Go through all the keys in dict1
+    for key in dict1.keys():
+        # Check if key exists in dict2
+        if dict2.get(key):
+            # Key exists, so append it to result
+            result.append(key)
+
+    # Once the loop is done, result should hold all common keys, return it
+    return result
+
+# Testing:
+print("\nTesting Problem 7")
+dict1 = {"a": 1, "b": 2, "c": 3}
+dict2 = {"b": 4, "c": 5, "d": 6}
+common_list = common_keys(dict1, dict2)
+print(common_list)
+
+print('''\nExpected:
+['b', 'c']
+''')
 
 
 """ 
