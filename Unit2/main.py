@@ -171,13 +171,51 @@ Problem 5: Restock Inventory
 
 
 Understand:
-
+    - Updates an inventory dict based on restock list
+    - 2 params: 
+        current_inventory: dict where each key-value pair represents item and current stock
+        restock_list: dict where each key-value pair represents item and quantity to be added to stock
+    - If an item in restock_list is not in current_inv, it should be added
+    - return current_inventory with the updates
 
 Plan:
-
-
+    - Loop through restock, keep track of items
+    - use get(item) on current_inventory
+    - if item exists, (not None) then increment stock by restock amount
+    - if not, create key and set its value to be restock amount
+    - return updated dict
 """
 # Implement
+def restock_inventory(current_inventory: dict, restock_list: dict):
+    # Unpack restock_list
+    for item, amount in restock_list.values():
+        # Check if item exists
+        existing = current_inventory.get(item)
+        # If item exists, increment its stock
+        if existing:
+            current_inventory[existing] += amount
+        # Item doesn't exist, so create and set amount to be restock value
+        else:
+            current_inventory[item] = amount
+    
+    # Return the updated dict
+    return current_inventory
+
+# Testing:
+print("Tests Problem 5")
+current_inventory = {
+    "apples": 30,
+    "bananas": 15,
+    "oranges": 10
+}
+restock_list = {
+    "oranges": 20,
+    "apples": 10,
+    "pears": 5
+}
+print(restock_inventory(current_inventory, restock_list))
+print('Expected: current_inventory = {"apples": 40,"bananas": 15,"oranges": 30,"pears": 5}')
+
 
 
 """ 
