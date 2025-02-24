@@ -48,7 +48,7 @@ print(is_subsequence(lst3, sequence3))    # Expected: True
 
 
 """ 
-Problem 2:
+Problem 2: Create a Dictionary
 
 
 Understand:
@@ -80,17 +80,42 @@ print('Expected: {"peanut": "butter", "dragon": "fly", "star": "fish", "pop": "c
 
 
 """
-Problem 3:
+Problem 3: Print Pair
 
 
 Understand:
-
+    - Inputs dictionary and a key 'target'
+    - Looks for target, when found, prints key and value
+    - Format:   Key : <key>
+                Value: <value>
 
 Plan:
-
+    - Use the get method and print the result if found
+    - If get returns with error, print "That pair does not exist!"
 
 """
 # Implement
+def print_pair(dictionary : dict, target):
+    value = dictionary.get(target)
+
+    if value == None:
+        print("That pair does not exist!")
+    else:
+        print(f'Key: {target}\nValue: {value}')
+
+dictionary = {"spongebob": "squarepants", "patrick": "star", "squidward": "tentacles"}
+print("\nResult:")
+print_pair(dictionary, "patrick")
+print_pair(dictionary, "plankton")
+print_pair(dictionary, "spongebob")
+
+print("""
+Expected:
+Key: patrick
+Value: star
+That pair does not exist!
+Key: spongebob
+Value: squarepants""")
 
 
 """ 
