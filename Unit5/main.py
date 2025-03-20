@@ -291,3 +291,44 @@ tail = get_tail(head)
 print(tail)
 
 
+""" 
+Problem 10: Replace Node
+
+Understand:
+- How do I traverse a linked list and update values?
+- Do I need to handle edge cases?
+
+Plan:
+- Traverse the linked list
+- For each node, check if its value matches the original value
+- If it does, update it to the replacement value
+"""
+# Implement
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+        
+def ll_replace(head, original, replacement):
+    current = head
+    while current is not None:
+        if current.value == original:
+            current.value = replacement
+        current = current.next
+
+# Example usage
+num3 = Node(5)
+num2 = Node(6, num3)
+num1 = Node(5, num2)
+# initial linked list: 5 -> 6 -> 5
+
+head = num1
+ll_replace(head, 5, "banana")
+
+# Print the updated linked list
+current = head
+while current is not None:
+    print(current.value, end="")
+    if current.next is not None:
+        print(" -> ", end="")
+    current = current.next
