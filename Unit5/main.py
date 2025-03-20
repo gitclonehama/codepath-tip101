@@ -86,3 +86,38 @@ squirtle.is_caught = True
 squirtle.print_pokemon()
 
 
+""" 
+Problem 4: Catch Pokemon
+
+Understand:
+- How do I add a method to change an attribute?
+- What parameters should the method take?
+
+Plan:
+- Add a catch method to the Pokemon class
+- Demonstrate its use with an example
+"""
+# Implement
+class Pokemon:
+    def __init__(self, name, types):
+        self.name = name
+        self.types = types
+        self.is_caught = False
+    
+    def print_pokemon(self):
+        print({
+            "name": self.name,
+            "types": self.types,
+            "is_caught": self.is_caught
+        })
+    
+    def catch(self):
+        self.is_caught = True
+
+my_pokemon = Pokemon("rattata", ["Normal"])
+my_pokemon.print_pokemon()
+
+my_pokemon.catch()
+my_pokemon.print_pokemon()
+
+
