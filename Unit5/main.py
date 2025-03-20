@@ -70,3 +70,19 @@ squirtle = Pokemon("Squirtle", ["Water"])
 squirtle.print_pokemon()
 
 
+""" 
+Problem 3: Is Caught
+
+Understand:
+- How do I update an attribute of a class instance?
+- How can I verify the update worked?
+
+Plan:
+- Update squirtle's is_caught attribute to True
+- Call print_pokemon to verify the change
+"""
+# Implement
+squirtle.is_caught = True
+squirtle.print_pokemon()
+
+
