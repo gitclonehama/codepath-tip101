@@ -197,3 +197,28 @@ opponent = bulbasaur
 pikachu.attack(opponent)
 
 
+""" 
+Problem 7: Convert to Linked List
+
+Understand:
+- What is a linked list and how does it differ from a normal list?
+- How do I connect nodes together?
+
+Plan:
+- Implement the Node class
+- Create two nodes with the required values
+- Connect them to form a linked list
+"""
+# Implement
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+
+node_2 = Node("Wigglytuff")
+node_1 = Node("Jigglypuff", node_2)
+
+print(node_1.value, "->", node_1.next.value)
+print(node_2.value, "->", node_2.next)
+
+
