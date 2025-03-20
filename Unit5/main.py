@@ -252,3 +252,42 @@ node_1 = add_first(node_1, new_node)
 print(node_1.value, "->", node_1.next.value)
 
 
+""" 
+Problem 9: Get Tail
+
+Understand:
+- How do I traverse a linked list to find the tail?
+- How do I handle edge cases like an empty list?
+
+Plan:
+- Check if the head is None and return None if it is
+- Traverse the list until finding a node with next = None
+- Return that node's value
+"""
+# Implement
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+
+def get_tail(head):
+    if head is None:
+        return None
+    
+    current = head
+    while current.next is not None:
+        current = current.next
+        
+    return current.value
+
+# Example usage
+num3 = Node("num3")
+num2 = Node("num2", num3)
+num1 = Node("num1", num2)
+# linked list: num1->num2->num3
+
+head = num1
+tail = get_tail(head)
+print(tail)
+
+
