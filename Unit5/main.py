@@ -40,3 +40,33 @@ class Pokemon:
 my_pokemon = Pokemon("Pikachu", ["Electric"])
 
 
+""" 
+Problem 2: Create Squirtle
+
+Understand:
+- How do I add a method to a class?
+- How do I call a method on an instance?
+
+Plan:
+- Update the Pokemon class with the print_pokemon method
+- Create a Squirtle instance
+- Call print_pokemon on the instance
+"""
+# Implement
+class Pokemon:
+    def __init__(self, name, types):
+        self.name = name
+        self.types = types
+        self.is_caught = False
+
+    def print_pokemon(self):
+        print({
+            "name": self.name,
+            "types": self.types,
+            "is_caught": self.is_caught
+        })
+
+squirtle = Pokemon("Squirtle", ["Water"])
+squirtle.print_pokemon()
+
+
