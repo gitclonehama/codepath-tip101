@@ -398,3 +398,57 @@ def binary_to_int(head):
 # Space Complexity: O(1) as we only use a constant amount of extra space
 
 
+""" 
+Problem 10: Add Two Numbers Represented by Linked Lists
+
+Understand:
+    - We have two linked lists representing non-negative integers in reverse order
+    - Each node contains a single digit
+    - We need to add these numbers and return the sum as a linked list
+
+Plan:
+    - Traverse both lists simultaneously
+    - Add the values along with any carry
+    - Create new nodes for the result list
+"""
+# Implement
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+
+def add_two_numbers(head_a, head_b):
+    dummy = Node(0)
+    current = dummy
+    carry = 0
+    
+    p = head_a
+    q = head_b
+    
+    while p or q:
+        # Get the values or 0 if a list ends
+        x = p.value if p else 0
+        y = q.value if q else 0
+        
+        # Calculate sum and carry
+        sum_val = x + y + carry
+        carry = sum_val // 10
+        
+        # Create a new node for the result
+        current.next = Node(sum_val % 10)
+        current = current.next
+        
+        # Move to next nodes if they exist
+        if p:
+            p = p.next
+        if q:
+            q = q.next
+    
+    # If there's still a carry, add a new node
+    if carry > 0:
+        current.next = Node(carry)
+    
+    return dummy.next
+
+# Time Complexity: O(max(m,n)) where m and n are the lengths of the two linked lists
+# Space Complexity: O(max(m,n)) for the new list we're creating
