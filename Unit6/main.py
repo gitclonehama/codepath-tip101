@@ -314,3 +314,54 @@ def find_last_node_in_cycle(head):
 # Space Complexity: O(1) as we only use a constant amount of extra space
 
 
+""" 
+Problem 8: Partition List Around Value
+
+Understand:
+    - We need to partition a linked list around a value
+    - All nodes with values less than the given value should come before nodes with values >= the given value
+    - Need to maintain the original relative order within each partition
+
+Plan:
+    - Create two separate lists: one for values < val and one for values >= val
+    - Connect the two lists at the end
+"""
+# Implement
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+
+def partition(head, val):
+    if not head or not head.next:
+        return head
+    
+    # Create dummy heads for our two partitions
+    before_dummy = Node(0)
+    after_dummy = Node(0)
+    
+    # Pointers to track the end of each partition
+    before = before_dummy
+    after = after_dummy
+    
+    # Traverse the original list
+    current = head
+    while current:
+        if current.value < val:
+            before.next = current
+            before = before.next
+        else:
+            after.next = current
+            after = after.next
+        current = current.next
+    
+    # Connect the two partitions
+    after.next = None
+    before.next = after_dummy.next
+    
+    return before_dummy.next
+
+# Time Complexity: O(n) where n is the length of the linked list
+# Space Complexity: O(1) as we reuse the existing nodes
+
+
