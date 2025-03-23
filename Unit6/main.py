@@ -365,3 +365,36 @@ def partition(head, val):
 # Space Complexity: O(1) as we reuse the existing nodes
 
 
+""" 
+Problem 9: Convert Binary Number in a Linked List to Integer
+
+Understand:
+    - We need to convert a binary number represented as a linked list to an integer
+    - Each node contains either 0 or 1
+    - The most significant bit is at the head of the list
+
+Plan:
+    - Traverse the linked list
+    - For each node, shift the result left by 1 and add the current node's value
+"""
+# Implement
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+
+def binary_to_int(head):
+    result = 0
+    current = head
+    
+    while current:
+        # Shift left and add current bit
+        result = (result << 1) | current.value
+        current = current.next
+    
+    return result
+
+# Time Complexity: O(n) where n is the length of the linked list
+# Space Complexity: O(1) as we only use a constant amount of extra space
+
+
