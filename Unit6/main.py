@@ -261,3 +261,56 @@ def is_circular(head):
 # Space Complexity: O(1) as we only use two pointers
 
 
+""" 
+Problem 7: Find Last Node in a Linked List Cycle
+
+Understand:
+    - We need to find the last node in a cycle of a linked list
+    - The last node is the one that points to a node in the cycle
+    - If there's no cycle, return None
+
+Plan:
+    - First, detect if there's a cycle using Floyd's algorithm
+    - If a cycle exists, find the start of the cycle
+    - Find the last node in the cycle (the one that points to the start of the cycle)
+"""
+# Implement
+def find_last_node_in_cycle(head):
+    if not head or not head.next:
+        return None
+    
+    # Detect cycle
+    slow = head
+    fast = head
+    has_cycle = False
+    
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            has_cycle = True
+            break
+    
+    if not has_cycle:
+        return None
+    
+    # Find the start of the cycle
+    slow = head
+    while slow != fast:
+        slow = slow.next
+        fast = fast.next
+    
+    # The start of the cycle is now at slow/fast
+    cycle_start = slow
+    
+    # Find the last node in the cycle (the one that points to cycle_start)
+    current = cycle_start
+    while current.next != cycle_start:
+        current = current.next
+    
+    return current
+
+# Time Complexity: O(n) where n is the length of the linked list
+# Space Complexity: O(1) as we only use a constant amount of extra space
+
+
