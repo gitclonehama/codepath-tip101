@@ -1,5 +1,5 @@
 ###
-### Unit X
+### Unit 6
 ###
 
 
@@ -20,140 +20,24 @@ Implement:
 
 
 """ 
-Problem 1:
-
-
-Understand:
-
-
-Plan:
-
-
-"""
-# Implement
-
-
-""" 
-Problem 2:
-
+Problem 1: Nested Constructors
 
 Understand:
-
-
-Plan:
-
-
-"""
-# Implement
-
-
-""" 
-Problem 3:
-
-
-Understand:
-
+    - We need to create a linked list with the values 4 -> 3 -> 2 using a single assignment statement
+    - We'll use the nested constructors approach, creating nodes inside other nodes
 
 Plan:
-
-
+    - Use the Node constructor to create the 2 node
+    - Nest that inside the constructor for the 3 node
+    - Nest that inside the constructor for the 4 node
 """
 # Implement
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+
+# Create linked list 4 -> 3 -> 2 in a single statement
+head = Node(4, Node(3, Node(2)))
 
 
-""" 
-Problem 4:
-
-
-Understand:
-
-
-Plan:
-
-
-"""
-# Implement
-
-
-""" 
-Problem 5:
-
-
-Understand:
-
-
-Plan:
-
-
-"""
-# Implement
-
-
-""" 
-Problem 6:
-
-
-Understand:
-
-
-Plan:
-
-
-"""
-# Implement
-
-
-""" 
-Problem 7:
-
-
-Understand:
-
-
-Plan:
-
-
-"""
-# Implement
-
-
-""" 
-Problem 8:
-
-
-Understand:
-
-
-Plan:
-
-
-"""
-# Implement
-
-
-""" 
-Problem 9:
-
-
-Understand:
-
-
-Plan:
-
-
-"""
-# Implement
-
-
-""" 
-Problem 10:
-
-
-Understand:
-
-
-Plan:
-
-
-"""
-# Implement
