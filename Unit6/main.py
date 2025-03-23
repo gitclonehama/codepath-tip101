@@ -151,3 +151,63 @@ def find_middle_element(head):
 # Space Complexity: O(1) as we only use a constant amount of extra space.
 
 
+""" 
+Problem 5: Is Palindrome?
+
+Understand:
+    - We need to check if a linked list represents a palindrome
+    - A palindrome reads the same forward and backward
+    - Need to analyze time and space complexity
+
+Plan:
+    - Find the middle of the linked list
+    - Reverse the second half of the linked list
+    - Compare the first half with the reversed second half
+"""
+# Implement
+class Node:
+   def __init__(self, value, next=None):
+       self.value = value
+       self.next = next
+
+def is_palindrome(head):
+    if not head or not head.next:
+        return True
+    
+    # Find the middle of the linked list
+    slow = head
+    fast = head
+    
+    while fast.next and fast.next.next:
+        slow = slow.next
+        fast = fast.next.next
+    
+    # Reverse the second half
+    second_half = reverse_list(slow.next)
+    
+    # Compare the first and second half
+    first_half = head
+    while second_half:
+        if first_half.value != second_half.value:
+            return False
+        first_half = first_half.next
+        second_half = second_half.next
+    
+    return True
+
+def reverse_list(head):
+    prev = None
+    current = head
+    
+    while current:
+        next_temp = current.next
+        current.next = prev
+        prev = current
+        current = next_temp
+    
+    return prev
+
+# Time Complexity: O(n) where n is the length of the linked list
+# Space Complexity: O(1) as we only modify the existing structure without using extra space
+
+
