@@ -211,3 +211,53 @@ def reverse_list(head):
 # Space Complexity: O(1) as we only modify the existing structure without using extra space
 
 
+""" 
+Problem 6: Detect Circular Linked List
+
+Understand:
+    - We need to determine if a linked list is circular
+    - A circular linked list is one where the tail node points back to the head
+    - Need to analyze time and space complexity
+
+Plan:
+    - Use the Floyd's Cycle Finding Algorithm (slow and fast pointers)
+    - If pointers meet, check if the meeting point eventually leads back to head
+"""
+# Implement
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+
+def is_circular(head):
+    if not head or not head.next:
+        return False
+    
+    # Use Floyd's cycle finding algorithm
+    slow = head
+    fast = head
+    
+    # Detect if there's a cycle
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            break
+    
+    # If no cycle found
+    if not fast or not fast.next:
+        return False
+    
+    # Check if the cycle is circular (connects back to head)
+    slow = head
+    while slow != fast:
+        slow = slow.next
+        fast = fast.next
+    
+    # If slow is head, then it's a circular list
+    return slow == head
+
+# Time Complexity: O(n) where n is the length of the linked list
+# Space Complexity: O(1) as we only use two pointers
+
+
