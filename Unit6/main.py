@@ -116,3 +116,38 @@ def remove_tail(head):
     return head
 
 
+""" 
+Problem 4: Find the Middle
+
+Understand:
+    - We need to find the middle node of a linked list using the slow-fast pointer technique
+    - If there are two middle nodes, return the second middle node
+    - Need to analyze time and space complexity
+
+Plan:
+    - Use two pointers: slow moves one step at a time, fast moves two steps
+    - When fast reaches the end, slow will be at the middle
+"""
+# Implement
+class Node:
+   def __init__(self, value, next=None):
+       self.value = value
+       self.next = next
+
+def find_middle_element(head):
+    if not head:
+        return None
+    
+    slow = head
+    fast = head
+    
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    
+    return slow
+
+# Time Complexity: O(n) where n is the length of the linked list. The fast pointer traverses the list at twice the speed.
+# Space Complexity: O(1) as we only use a constant amount of extra space.
+
+
