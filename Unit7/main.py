@@ -81,3 +81,34 @@ test_list = [1, 2, 3, 4, 5]
 print(f"Sum of {test_list} is: {sum_list(test_list)}")  # Expected: 15
 
 
+""" 
+Problem 4: Recursive Power of 2
+
+Understand:
+    - What are the properties of powers of 2?
+    - How can we check if n is a power of 2 recursively?
+
+Plan:
+    - Define base cases:
+      - If n = 1, return True (2^0 = 1)
+      - If n < 1 or n has remainder when divided by 2, return False
+    - Recursive case: Check if n/2 is a power of 2
+"""
+# Implement
+def is_power_of_two(n):
+    # Base cases
+    if n <= 0:
+        return False
+    if n == 1:
+        return True
+    # If n is odd, it's not a power of 2
+    if n % 2 != 0:
+        return False
+    # Recursive case: check if n/2 is a power of 2
+    return is_power_of_two(n // 2)
+
+# Test the function
+print(f"Is 16 a power of 2? {is_power_of_two(16)}")  # Expected: True
+print(f"Is 24 a power of 2? {is_power_of_two(24)}")  # Expected: False
+
+
