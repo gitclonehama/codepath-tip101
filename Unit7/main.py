@@ -281,3 +281,54 @@ sorted_list = [1, 3, 5, 7, 9, 11, 13, 15]
 print(f"Index of 11 in {sorted_list}: {binary_search_recursive(sorted_list, 11)}")  # Expected: 5
 
 
+""" 
+Problem 9: Count Rotations
+
+Understand:
+    - What defines a rotation in a circular sorted array?
+    - How can we find the pivot point efficiently?
+
+Plan:
+    - Use binary search to find the pivot (smallest element)
+    - The index of the pivot is equal to the number of rotations
+    - Special case: if array is not rotated, return 0
+"""
+# Implement
+def count_rotations(nums):
+    # Edge case: empty list or single element
+    if not nums or len(nums) == 1:
+        return 0
+    
+    # Initialize pointers
+    left = 0
+    right = len(nums) - 1
+    
+    # If first element is smaller than last, array is not rotated
+    if nums[left] < nums[right]:
+        return 0
+    
+    # Binary search for pivot
+    while left <= right:
+        middle = (left + right) // 2
+        
+        # Check if middle element is pivot
+        if middle < len(nums) - 1 and nums[middle] > nums[middle + 1]:
+            return middle + 1
+        if middle > 0 and nums[middle] < nums[middle - 1]:
+            return middle
+            
+        # Decide which half to search
+        if nums[middle] >= nums[0]:
+            # Search right half
+            left = middle + 1
+        else:
+            # Search left half
+            right = middle - 1
+    
+    return 0
+
+# Test the function
+rotated_list = [8, 9, 10, 2, 5, 6]
+print(f"Number of rotations in {rotated_list}: {count_rotations(rotated_list)}")  # Expected: 3
+
+
