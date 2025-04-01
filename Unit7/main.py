@@ -240,3 +240,44 @@ binary_list = [0, 0, 0, 0, 1, 1, 1]
 print(f"Number of 1s in {binary_list}: {count_ones(binary_list)}")  # Expected: 3
 
 
+""" 
+Problem 8: Binary Search IV
+
+Understand:
+    - How does a recursive binary search differ from iterative?
+    - What are the base and recursive cases?
+
+Plan:
+    - Define helper function with left and right pointers
+    - Base case: left > right (not found)
+    - Calculate middle index
+    - Compare and recurse on appropriate half
+"""
+# Implement
+def binary_search_recursive(nums, target):
+    # Helper function with pointers
+    def binary_search_helper(left, right):
+        # Base case: target not found
+        if left > right:
+            return -1
+        
+        # Calculate middle index
+        middle = (left + right) // 2
+        
+        # Check if target is at middle
+        if nums[middle] == target:
+            return middle
+        # If target is greater, search right half
+        elif nums[middle] < target:
+            return binary_search_helper(middle + 1, right)
+        # If target is smaller, search left half
+            return binary_search_helper(left, middle - 1)
+    
+    # Start the search
+    return binary_search_helper(0, len(nums) - 1)
+
+# Test the function
+sorted_list = [1, 3, 5, 7, 9, 11, 13, 15]
+print(f"Index of 11 in {sorted_list}: {binary_search_recursive(sorted_list, 11)}")  # Expected: 5
+
+
