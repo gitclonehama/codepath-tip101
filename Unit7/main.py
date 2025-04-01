@@ -112,3 +112,47 @@ print(f"Is 16 a power of 2? {is_power_of_two(16)}")  # Expected: True
 print(f"Is 24 a power of 2? {is_power_of_two(24)}")  # Expected: False
 
 
+""" 
+Problem 5: Binary Search I
+
+Understand:
+    - How does binary search work on a sorted list?
+    - What are the steps for an iterative implementation?
+
+Plan:
+    - Initialize left and right pointers
+    - While left <= right:
+      - Calculate middle index
+      - If target found, return index
+      - Adjust pointers based on comparison
+    - Return -1 if target not found
+"""
+# Implement
+def binary_search(lst, target):
+    # Initialize pointers
+    left = 0
+    right = len(lst) - 1
+    
+    # While search space is not exhausted
+    while left <= right:
+        # Calculate middle index
+        middle = (left + right) // 2
+        
+        # Check if target is at middle
+        if lst[middle] == target:
+            return middle
+        # If target is greater, search right half
+        elif lst[middle] < target:
+            left = middle + 1
+        # If target is smaller, search left half
+        else:
+            right = middle - 1
+    
+    # Target not found
+    return -1
+
+# Test the function
+sorted_list = [1, 3, 5, 7, 9, 11, 13, 15]
+print(f"Index of 11 in {sorted_list}: {binary_search(sorted_list, 11)}")  # Expected: 5
+
+
