@@ -196,3 +196,47 @@ print(f"Is '(())' neatly nested? {is_nested('(())')}")  # Expected: True
 print(f"Is '()())' neatly nested? {is_nested('()())')}")  # Expected: False
 
 
+""" 
+Problem 7: How Many 1s
+
+Understand:
+    - How can we use binary search to count elements?
+    - What's the most efficient way to find all 1s in a sorted binary array?
+
+Plan:
+    - Use binary search to find the first occurrence of 1
+    - Calculate how many 1s are in the list based on the index
+    - Return the count
+"""
+# Implement
+def count_ones(lst):
+    # Edge cases
+    if not lst or lst[-1] == 0:
+        return 0
+    if lst[0] == 1:
+        return len(lst)
+    
+    # Binary search for first 1
+    left = 0
+    right = len(lst) - 1
+    
+    while left <= right:
+        middle = (left + right) // 2
+        
+        if lst[middle] == 1 and (middle == 0 or lst[middle-1] == 0):
+            # Found first 1
+            return len(lst) - middle
+        elif lst[middle] == 1:
+            # Look for earlier 1
+            right = middle - 1
+        else:
+            # Look for 1 to the right
+            left = middle + 1
+    
+    return 0
+
+# Test the function
+binary_list = [0, 0, 0, 0, 1, 1, 1]
+print(f"Number of 1s in {binary_list}: {count_ones(binary_list)}")  # Expected: 3
+
+
