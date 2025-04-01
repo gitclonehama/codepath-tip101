@@ -156,3 +156,43 @@ sorted_list = [1, 3, 5, 7, 9, 11, 13, 15]
 print(f"Index of 11 in {sorted_list}: {binary_search(sorted_list, 11)}")  # Expected: 5
 
 
+""" 
+Problem 6: Neatly Nested
+
+Understand:
+    - What makes a string of parentheses valid?
+    - How can we check validity recursively?
+
+Plan:
+    - Define base case: empty string is valid
+    - For non-empty string:
+      - Check if it starts with '(' and ends with ')'
+      - If so, recursively check the inner string
+      - Also check if it's a concatenation of two valid strings
+"""
+# Implement
+def is_nested(paren_s):
+    # Base case: empty string is valid
+    if not paren_s:
+        return True
+    
+    # Check if it starts with '(' and ends with ')'
+    if paren_s[0] == '(' and paren_s[-1] == ')':
+        # Check if inner string is valid
+        inner = is_nested(paren_s[1:-1])
+        if inner:
+            return True
+    
+    # Try to split the string into two parts
+    for i in range(1, len(paren_s)):
+        # Check if both parts are valid
+        if is_nested(paren_s[:i]) and is_nested(paren_s[i:]):
+            return True
+    
+    return False
+
+# Test the function
+print(f"Is '(())' neatly nested? {is_nested('(())')}")  # Expected: True
+print(f"Is '()())' neatly nested? {is_nested('()())')}")  # Expected: False
+
+
