@@ -32,3 +32,27 @@ print("\nIterative version:")
 repeat_hello_iterative(5)
 
 
+""" 
+Problem 2: Factorial Cases
+
+Understand:
+    - What is the base case for factorial?
+    - How can we express factorial recursively?
+
+Plan:
+    - Define the base case: factorial(0) = 1
+    - For n > 0, factorial(n) = n * factorial(n-1)
+    - Implement the recursive function
+"""
+# Implement
+def factorial(n):
+    # Base case
+    if n == 0:
+        return 1
+    # Recursive case
+    return n * factorial(n - 1)
+
+# Test the function
+print(f"Factorial of 5 is: {factorial(5)}")  # Expected: 120
+
+
