@@ -332,3 +332,58 @@ rotated_list = [8, 9, 10, 2, 5, 6]
 print(f"Number of rotations in {rotated_list}: {count_rotations(rotated_list)}")  # Expected: 3
 
 
+""" 
+Problem 10: Merge Sort
+
+Understand:
+    - How does merge sort use divide and conquer?
+    - What are the steps to implement merge sort recursively?
+
+Plan:
+    - Base case: list with 0 or 1 element is already sorted
+    - Divide list into two halves
+    - Recursively sort each half
+    - Merge sorted halves using the helper function
+"""
+# Implement
+def merge(left, right):
+    result = []  # List to store the merged result
+    i = j = 0    # Pointers to iterate over left and right input arrays
+    
+    # Compare elements from left and right halves
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+            
+    # Add any remaining elements from the left half
+    while i < len(left):
+        result.append(left[i])
+        i += 1
+    
+    # Add any remaining elements from the right half
+    while j < len(right):
+        result.append(right[j])
+        j += 1
+    
+    return result
+
+def merge_sort(lst):
+    # Base case: list with 0 or 1 element is already sorted
+    if len(lst) <= 1:
+        return lst
+    
+    # Divide list into two halves
+    middle = len(lst) // 2
+    left = merge_sort(lst[:middle])
+    right = merge_sort(lst[middle:])
+    
+    # Merge sorted halves
+    return merge(left, right)
+
+# Test the function
+unsorted_list = [5, 3, 4, 2, 1]
+print(f"Sorted {unsorted_list}: {merge_sort(unsorted_list)}")  # Expected: [1, 2, 3, 4, 5]
