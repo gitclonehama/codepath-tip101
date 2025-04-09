@@ -78,3 +78,38 @@ def print_tree(root):
 # print_tree(root)  # Output: 1 2 4 5 3 6
 
 
+""" 
+Problem 2: 3-Node Sum I
+Given the root of a binary tree that has exactly 3 nodes: the root, its left child, and its right child, return True if the value of the root is equal to the sum of the values of its two children. Return False otherwise.
+
+Evaluate the time complexity of your function.
+
+class TreeNode:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+Understand:
+    - Can we assume the tree will always have exactly 3 nodes (root + 2 children)?
+    - Do we need to handle any edge cases like None values?
+
+Plan:
+    - Check if the root value equals the sum of root.left.val and root.right.val
+    - Return True if they're equal, False otherwise
+    - Time complexity: O(1) as we're only doing a simple comparison
+"""
+# Implement
+class TreeNode:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def check_tree(root):
+    # Simple check if root value equals sum of children's values
+    return root.val == root.left.val + root.right.val
+
+# Time complexity: O(1) - constant time operation regardless of input size
+
+
