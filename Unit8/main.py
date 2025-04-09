@@ -148,3 +148,49 @@ def check_tree(root):
 # Time complexity: O(1) - constant time operations
 
 
+""" 
+Problem 4: Find Leftmost Node I
+Given the root of a binary tree, write a function that finds the value of the left most node in the tree.
+
+Evaluate the time complexity of your function.
+
+Understand:
+    - By "leftmost node", do we mean the node furthest to the left at any level?
+    - How should we handle an empty tree (null root)?
+
+Plan:
+    - Implement an iterative approach using a queue
+    - Traverse the tree level by level, always prioritizing the left child
+    - Return the value of the leftmost node
+    - Time complexity: O(h) where h is the height of the tree
+"""
+# Implement
+from collections import deque
+
+def left_most(root):
+    # Handle empty tree
+    if not root:
+        return None
+    
+    # Iterative approach with queue
+    queue = deque([root])
+    leftmost = root.val
+    
+    while queue:
+        node = queue.popleft()
+        
+        # Update leftmost if we're at a new level's leftmost node
+        if node == queue[0] if queue else True:
+            leftmost = node.val
+            
+        # Add children to queue
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+    
+    return leftmost
+
+# Time complexity: O(n) where n is the number of nodes in the tree
+
+
