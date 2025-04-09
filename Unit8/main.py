@@ -4,22 +4,6 @@
 
 
 """ 
-Problem X:
-
-
-Understand:
-    - Share 2 questions you would ask to help understand the question
-
-Plan:
-    - Write out in plain English what you want to do
-    - Translate each sub-problem into pseudocode
-
-Implement:
-    - Translate the pseudocode into Python and share your final answer
-"""
-
-
-""" 
 Problem 1: Build a Binary Tree I
 Given the following TreeNode class, create the binary tree depicted in the image below.
 
