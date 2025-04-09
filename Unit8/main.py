@@ -113,3 +113,38 @@ def check_tree(root):
 # Time complexity: O(1) - constant time operation regardless of input size
 
 
+""" 
+Problem 3: 3-Node Sum II
+Given the root of a binary tree that has at most 3 nodes: the root, its left child, and its right child, return True if the value of the root is equal to the sum of the values of its two children. Return False otherwise.
+
+Evaluate the time complexity of your function.
+
+Understand:
+    - What if the tree has fewer than 3 nodes (only root, or root with one child)?
+    - Should we return False if one or both children are missing?
+
+Plan:
+    - Check if the root is None, return False if it is
+    - Calculate sum of children values, handling None cases
+    - Compare root value with sum and return result
+    - Time complexity: O(1) as we're only doing simple checks and comparisons
+"""
+# Implement
+def check_tree(root):
+    # Handle edge cases
+    if root is None:
+        return False
+    
+    # Calculate sum of children's values, handling None cases
+    left_val = root.left.val if root.left else 0
+    right_val = root.right.val if root.right else 0
+    
+    # Check if root has at least one child before comparing
+    if root.left is None and root.right is None:
+        return False
+        
+    return root.val == left_val + right_val
+
+# Time complexity: O(1) - constant time operations
+
+
