@@ -277,3 +277,35 @@ def is_univalued(root):
 # Time complexity: O(n) where n is the number of nodes in the tree
 
 
+""" 
+Problem 7: Binary Tree Height
+Given the root of a binary tree, write a function height() that returns the height of a binary tree.
+
+Evaluate the time complexity of your function.
+
+Understand:
+    - Is the height of an empty tree 0 or -1?
+    - Is a tree with only a root considered height 1?
+
+Plan:
+    - Use a recursive approach to calculate height
+    - For each node, calculate the height of left and right subtrees
+    - Return the maximum of the two heights + 1
+    - Base case: return 0 for null nodes
+    - Time complexity: O(n) where n is the number of nodes
+"""
+# Implement
+def height(root):
+    if not root:
+        return 0
+    
+    # Calculate height of left and right subtrees
+    left_height = height(root.left)
+    right_height = height(root.right)
+    
+    # Return the maximum height + 1 for the current node
+    return max(left_height, right_height) + 1
+
+# Time complexity: O(n) where n is the number of nodes in the tree
+
+
