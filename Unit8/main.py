@@ -347,3 +347,64 @@ def insert(root, key, value):
 # Time complexity: O(h) where h is the height of the tree (worst case O(n) for unbalanced tree)
 
 
+""" 
+Problem 9: BST Remove I
+Use the provided pseudocode to solve the problem below. Given a key and the root of a binary search tree, remove the node with the given key. Return the root of the modified tree.
+
+Understand:
+    - How do we handle the case when the node to remove has two children?
+    - What if the key doesn't exist in the tree?
+
+Plan:
+    - Follow the provided pseudocode:
+    - Locate the node to be removed through BST search
+    - Handle different cases: leaf node, node with one child, node with two children
+    - For a node with two children, find the in-order successor and use it as replacement
+    - Time complexity: O(h) where h is the height of the tree
+"""
+# Implement
+def remove_bst(root, key):
+    # Base case: if root is None, the key doesn't exist in the tree
+    if not root:
+        return None
+    
+    # Locate the node to be removed
+    if key < root.key:
+        root.left = remove_bst(root.left, key)
+    elif key > root.key:
+        root.right = remove_bst(root.right, key)
+    else:
+        # Node to remove found
+        
+        # Case 1: Leaf node (no children)
+        if not root.left and not root.right:
+            return None
+            
+        # Case 2: Node with only one child
+        if not root.left:
+            return root.right
+        if not root.right:
+            return root.left
+            
+        # Case 3: Node with two children
+        # Find the in-order successor (smallest node in right subtree)
+        successor = find_min(root.right)
+        
+        # Replace the node's key and value with the successor's
+        root.key = successor.key
+        root.val = successor.val
+        
+        # Remove the successor
+        root.right = remove_bst(root.right, successor.key)
+    
+    return root
+
+def find_min(node):
+    current = node
+    while current.left:
+        current = current.left
+    return current
+
+# Time complexity: O(h) where h is the height of the tree
+
+
