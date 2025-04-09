@@ -194,3 +194,45 @@ def left_most(root):
 # Time complexity: O(n) where n is the number of nodes in the tree
 
 
+""" 
+Problem 5: Find Leftmost Node II
+If you implemented the previous left_most() function iteratively, implement it recursively. If you implemented it recursively, implement it iteratively.
+
+Evaluate the time complexity of the function.
+
+Understand:
+    - How do we track the leftmost node recursively?
+    - Does the leftmost node mean the node furthest to the left at the lowest level?
+
+Plan:
+    - Implement a recursive approach with a helper function
+    - Track the current depth and update leftmost node when we find a deeper left path
+    - Return the leftmost node value
+    - Time complexity: O(n) where n is the number of nodes
+"""
+# Implement
+def left_most(root):
+    if not root:
+        return None
+    
+    result = [None, -1]  # [leftmost_value, max_depth]
+    
+    def dfs(node, depth):
+        if not node:
+            return
+            
+        # Update result if we've found a deeper leftmost node
+        if depth > result[1]:
+            result[0] = node.val
+            result[1] = depth
+            
+        # Traverse left first, then right
+        dfs(node.left, depth + 1)
+        dfs(node.right, depth + 1)
+    
+    dfs(root, 0)
+    return result[0]
+
+# Time complexity: O(n) where n is the number of nodes in the tree
+
+
