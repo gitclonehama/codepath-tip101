@@ -408,3 +408,43 @@ def find_min(node):
 # Time complexity: O(h) where h is the height of the tree
 
 
+""" 
+Problem 10: BST In-order Successor
+In the remove_bst() problem, we summarized the in-order successor of a given node as the smallest node in the given node's right subtree. This is true if the given node has a right subtree.
+
+Understand:
+    - What if the node doesn't have a right subtree?
+    - How do we find the successor in that case?
+
+Plan:
+    - If the current node has a right subtree, find the minimum node in that subtree
+    - Otherwise, the successor is the nearest ancestor where current is in its left subtree
+    - Traverse from root keeping track of a potential successor
+    - Time complexity: O(h) where h is the height of the tree
+"""
+# Implement
+def inorder_successor(root, current):
+    # Case 1: If current has a right subtree, successor is the minimum in that subtree
+    if current.right:
+        return find_min(current.right)
+    
+    # Case 2: If no right subtree, find the nearest ancestor where current is in its left subtree
+    successor = None
+    ancestor = root
+    
+    while ancestor != current:
+        if current.key < ancestor.key:
+            successor = ancestor
+            ancestor = ancestor.left
+        else:
+            ancestor = ancestor.right
+    
+    return successor
+
+def find_min(node):
+    current = node
+    while current.left:
+        current = current.left
+    return current
+
+# Time complexity: O(h) where h is the height of the tree
