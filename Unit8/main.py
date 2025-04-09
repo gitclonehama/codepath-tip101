@@ -309,3 +309,41 @@ def height(root):
 # Time complexity: O(n) where n is the number of nodes in the tree
 
 
+""" 
+Problem 8: BST Insert
+Given the root of a binary search tree, insert a new node with a given key and value into the tree. Return the root of the modified tree. The tree is sorted by key. If a node with the given key already exists, update the the existing key's value. You do not need to maintain a balanced tree.
+
+Evaluate the time complexity of your function.
+
+Understand:
+    - Should we modify the tree in-place or create a new tree?
+    - How should we handle duplicate keys?
+
+Plan:
+    - Traverse the BST to find the correct insertion point based on key
+    - If a node with the key already exists, update its value
+    - Otherwise, create a new node and insert it as a leaf
+    - Return the root of the modified tree
+    - Time complexity: O(h) where h is the height of the tree
+"""
+# Implement
+def insert(root, key, value):
+    # If tree is empty, create a new root node
+    if not root:
+        return TreeNode(key, value)
+    
+    # If key already exists, update the value
+    if key == root.key:
+        root.val = value
+    # If key is smaller, insert in left subtree
+    elif key < root.key:
+        root.left = insert(root.left, key, value)
+    # If key is larger, insert in right subtree
+    else:
+        root.right = insert(root.right, key, value)
+    
+    return root
+
+# Time complexity: O(h) where h is the height of the tree (worst case O(n) for unbalanced tree)
+
+
