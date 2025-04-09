@@ -236,3 +236,44 @@ def left_most(root):
 # Time complexity: O(n) where n is the number of nodes in the tree
 
 
+""" 
+Problem 6: Is Uni-valued
+A binary tree is uni-valued if every node in the tree has the same value. Given the root of a binary tree, return True if the given tree is uni-valued and False otherwise.
+
+Evaluate the time complexity of your solution.
+
+Understand:
+    - Do we consider an empty tree to be uni-valued?
+    - What about a tree with only one node?
+
+Plan:
+    - Store the value of the root node
+    - Traverse the tree and check if all nodes have the same value
+    - Return False as soon as we find a different value
+    - Return True if we complete the traversal without finding different values
+    - Time complexity: O(n) where n is the number of nodes
+"""
+# Implement
+def is_univalued(root):
+    if not root:
+        return True
+    
+    # Get the target value from root
+    target_val = root.val
+    
+    def check_nodes(node):
+        if not node:
+            return True
+        
+        # Check if current node matches the target value
+        if node.val != target_val:
+            return False
+            
+        # Recursively check left and right subtrees
+        return check_nodes(node.left) and check_nodes(node.right)
+    
+    return check_nodes(root)
+
+# Time complexity: O(n) where n is the number of nodes in the tree
+
+
