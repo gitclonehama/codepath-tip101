@@ -382,3 +382,49 @@ def level_difference(root):
 # We visit each node exactly once and perform constant time operations for each node.
 
 
+""" 
+Problem 9: Level Order Traversal of Binary Tree with Nested Lists
+Given the root of a binary tree, write a function level_order() that returns the level order traversal of its nodes' values (i.e., from left to right, level by level). level_order() should return a list of lists, where each inner list contains the node values of a single level in the tree.
+
+Understand:
+    - Similar to Problem 6, but now we need to group nodes by level
+    - Each level should be represented as a separate list in the result
+    - The final result is a list of lists
+
+Plan:
+    - Use BFS to traverse the tree level by level
+    - Process all nodes at the current level before moving to the next level
+    - Store values of each level in separate lists
+"""
+# Implement
+def level_order(root):
+    if not root:
+        return []
+    
+    result = []
+    queue = deque([root])
+    
+    while queue:
+        level_size = len(queue)  # Number of nodes at current level
+        current_level = []
+        
+        # Process all nodes at the current level
+        for _ in range(level_size):
+            node = queue.popleft()
+            current_level.append(node.val)
+            
+            # Add children for next level processing
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        
+        # Add current level's values to result
+        result.append(current_level)
+    
+    return result
+
+# Time Complexity: O(n) where n is the number of nodes in the tree
+# We visit each node exactly once and perform constant time operations for each node.
+
+
