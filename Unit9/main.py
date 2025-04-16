@@ -112,3 +112,44 @@ def binary_tree_paths(root):
 # Time Complexity: O(n) to visit all nodes, with extra string operations making it O(n²) in total
 
 
+""" 
+Problem 3: Minimum Difference in BST
+Given the root of a binary search tree, return the minimum difference between the values of any two different nodes in the tree.
+
+Understand:
+    - Can we leverage BST properties (all left nodes < parent < all right nodes)?
+    - Will there always be at least two nodes in the tree?
+
+Plan:
+    - Use in-order traversal of the BST to get values in sorted order
+    - Keep track of the previous node's value during traversal
+    - Calculate difference between current and previous nodes
+    - Update minimum difference if current difference is smaller
+"""
+# Implement
+def min_diff_in_bst(root):
+    prev_val = float('-inf')  # Initialize with negative infinity
+    min_diff = float('inf')   # Initialize with positive infinity
+    
+    def inorder(node):
+        nonlocal prev_val, min_diff
+        if not node:
+            return
+        
+        # Process left subtree
+        inorder(node.left)
+        
+        # Process current node
+        if prev_val != float('-inf'):
+            min_diff = min(min_diff, node.val - prev_val)
+        prev_val = node.val
+        
+        # Process right subtree
+        inorder(node.right)
+    
+    inorder(root)
+    return min_diff
+
+# Time Complexity: O(n) where n is the number of nodes in the BST
+
+
