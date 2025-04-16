@@ -249,3 +249,50 @@ def can_split(root):
 # Time Complexity: O(n) where n is the number of nodes in the tree
 
 
+""" 
+Problem 6: Level Order Traversal of Binary Tree
+Given the following pseudocode and the root of a binary tree, return a list of the level order traversal of it's nodes' values (i.e., from left to right, level by level).
+
+Understand:
+    - We need to traverse the tree one level at a time, from top to bottom
+    - At each level, we process nodes from left to right before moving to the next level
+
+Plan:
+    - Use a queue data structure to track nodes at each level
+    - Process the tree using Breadth-First Search (BFS) approach
+    - Store visited node values in a result list
+"""
+# Implement
+from collections import deque
+
+def level_order(root):
+    # If the tree is empty:
+    if not root:
+        return []  # return an empty list
+
+    # Create an empty queue using deque
+    queue = deque([root])
+    # Create an empty list to store the explored nodes
+    result = []
+
+    # While the queue is not empty:
+    while queue:
+        # Pop the next node off the queue (pop from the left side!)
+        node = queue.popleft()
+        # Add the popped node to the list of explored nodes
+        result.append(node.val)
+
+        # Add each of the popped node's children to the end of the queue
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+
+    # Return the list of visited nodes
+    return result
+
+# Time Complexity: O(n) where n is the number of nodes in the tree
+# We visit each node exactly once, and the operations for each node (enqueue, dequeue, append to result)
+# are all constant time O(1) operations.
+
+
