@@ -428,3 +428,44 @@ def level_order(root):
 # We visit each node exactly once and perform constant time operations for each node.
 
 
+""" 
+Problem 10: Sum of Binary Tree Node Tilts
+Given the root of a binary tree, return the sum of every tree node's tilt. The tilt of a tree node is the absolute difference between the sum of all left subtree node values and all right subtree node values. If a node does not have a left child, then the sum of the left subtree node values is treated as 0. The rule is similar if the node does not have a right child.
+
+Understand:
+    - For each node, we need to calculate its tilt: abs(left_sum - right_sum)
+    - We need to sum up all these tilt values
+    - We need to calculate the sum of each subtree's node values
+
+Plan:
+    - Use a post-order traversal (left, right, root)
+    - For each subtree, calculate both:
+      1. The sum of all its node values
+      2. The tilt of the current node
+    - Keep a running total of all tilt values
+"""
+# Implement
+def find_tilt(root):
+    total_tilt = 0
+    
+    def post_order(node):
+        nonlocal total_tilt
+        if not node:
+            return 0
+        
+        # Get sum of left and right subtrees
+        left_sum = post_order(node.left)
+        right_sum = post_order(node.right)
+        
+        # Calculate tilt of current node and add to total
+        tilt = abs(left_sum - right_sum)
+        total_tilt += tilt
+        
+        # Return sum of this subtree (including current node)
+        return left_sum + right_sum + node.val
+    
+    post_order(root)
+    return total_tilt
+
+# Time Complexity: O(n) where n is the number of nodes in the tree
+# We visit each node exactly once and perform constant time operations for each node.
