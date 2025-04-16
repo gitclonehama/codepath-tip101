@@ -5,7 +5,8 @@
 
 """ 
 Problem 1: Is Symmetric Tree
-Given the root of a binary tree, return True if the tree's left and right subtrees are mirrors of each other (i.e., tree is symmetric around its center). Return False otherwise.
+Given the root of a binary tree, return True if the tree's left and right subtrees are 
+mirrors of each other (i.e., tree is symmetric around its center). Return False otherwise.
 
 Understand:
     - How do we define "mirror" of subtrees? Does it mean same structure with identical values?
@@ -98,7 +99,8 @@ def binary_tree_paths(root):
 
 """ 
 Problem 3: Minimum Difference in BST
-Given the root of a binary search tree, return the minimum difference between the values of any two different nodes in the tree.
+Given the root of a binary search tree, return the minimum difference between 
+the values of any two different nodes in the tree.
 
 Understand:
     - Can we leverage BST properties (all left nodes < parent < all right nodes)?
@@ -139,7 +141,8 @@ def min_diff_in_bst(root):
 
 """ 
 Problem 4: Increasing Order Search Tree
-Given the root of a binary search tree, rearrange the tree in in-order so that the leftmost node of the tree is now the root of tree and every node has no left child and only one right child.
+Given the root of a binary search tree, rearrange the tree in in-order so that the 
+leftmost node of the tree is now the root of tree and every node has no left child and only one right child.
 
 Understand:
     - Do we need to create new nodes or reuse existing ones?
@@ -181,7 +184,8 @@ def increasing_bst(root):
 
 """ 
 Problem 5: Equal Tree Split
-Given the root of a binary tree, return True if removing an edge between two nodes can split the tree into two trees with an equal number of nodes. Return False otherwise.
+Given the root of a binary tree, return True if removing an edge between two 
+nodes can split the tree into two trees with an equal number of nodes. Return False otherwise.
 
 Understand:
     - Can any edge be removed, or just edges from the root?
@@ -235,7 +239,8 @@ def can_split(root):
 
 """ 
 Problem 6: Level Order Traversal of Binary Tree
-Given the following pseudocode and the root of a binary tree, return a list of the level order traversal of it's nodes' values (i.e., from left to right, level by level).
+Given the following pseudocode and the root of a binary tree, return a list of the 
+level order traversal of it's nodes' values (i.e., from left to right, level by level).
 
 Understand:
     - We need to traverse the tree one level at a time, from top to bottom
@@ -282,7 +287,8 @@ def level_order(root):
 
 """ 
 Problem 7: Find Minimum Depth of Binary Tree
-Given the root of a binary tree, return its minimum depth. The minimum depth is the number of nodes along the shortest path from the root down to the nearest leaf node.
+Given the root of a binary tree, return its minimum depth. The minimum depth is 
+the number of nodes along the shortest path from the root down to the nearest leaf node.
 
 Understand:
     - The minimum depth is the shortest path from root to any leaf node
@@ -324,7 +330,8 @@ def min_depth(root):
 
 """ 
 Problem 8: Odd-Even Level Sum Difference in Binary Tree
-Given the root of a binary tree, return the difference between the sum of all node values in odd levels and sum of all node values in even levels.
+Given the root of a binary tree, return the difference between the sum of all 
+node values in odd levels and sum of all node values in even levels.
 
 Understand:
     - Need to track the level of each node (root is at level 1)
@@ -368,7 +375,10 @@ def level_difference(root):
 
 """ 
 Problem 9: Level Order Traversal of Binary Tree with Nested Lists
-Given the root of a binary tree, write a function level_order() that returns the level order traversal of its nodes' values (i.e., from left to right, level by level). level_order() should return a list of lists, where each inner list contains the node values of a single level in the tree.
+Given the root of a binary tree, write a function level_order() that returns the 
+level order traversal of its nodes' values (i.e., from left to right, level by level). 
+level_order() should return a list of lists, where each inner list contains the node 
+values of a single level in the tree.
 
 Understand:
     - Similar to Problem 6, but now we need to group nodes by level
@@ -414,7 +424,10 @@ def level_order(root):
 
 """ 
 Problem 10: Sum of Binary Tree Node Tilts
-Given the root of a binary tree, return the sum of every tree node's tilt. The tilt of a tree node is the absolute difference between the sum of all left subtree node values and all right subtree node values. If a node does not have a left child, then the sum of the left subtree node values is treated as 0. The rule is similar if the node does not have a right child.
+Given the root of a binary tree, return the sum of every tree node's tilt. The tilt of a tree node is the 
+absolute difference between the sum of all left subtree node values and all right subtree node values. 
+If a node does not have a left child, then the sum of the left subtree node values is treated as 0. 
+The rule is similar if the node does not have a right child.
 
 Understand:
     - For each node, we need to calculate its tilt: abs(left_sum - right_sum)
