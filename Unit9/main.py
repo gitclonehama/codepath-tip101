@@ -296,3 +296,45 @@ def level_order(root):
 # are all constant time O(1) operations.
 
 
+""" 
+Problem 7: Find Minimum Depth of Binary Tree
+Given the root of a binary tree, return its minimum depth. The minimum depth is the number of nodes along the shortest path from the root down to the nearest leaf node.
+
+Understand:
+    - The minimum depth is the shortest path from root to any leaf node
+    - A leaf node is a node with no children (no left and no right child)
+    - We need to find the leaf node with the smallest depth
+
+Plan:
+    - Use BFS to traverse the tree level by level
+    - As soon as we encounter a leaf node, return its depth
+    - BFS ensures we find the first leaf node at the minimum depth
+"""
+# Implement
+def min_depth(root):
+    if not root:
+        return 0
+    
+    # Use BFS to find the first leaf node
+    queue = deque([(root, 1)])  # Store (node, depth) pairs
+    
+    while queue:
+        node, depth = queue.popleft()
+        
+        # Check if this is a leaf node
+        if not node.left and not node.right:
+            return depth
+        
+        # Add children to queue with incremented depth
+        if node.left:
+            queue.append((node.left, depth + 1))
+        if node.right:
+            queue.append((node.right, depth + 1))
+    
+    return 0  # Should not reach here if tree is valid
+
+# Time Complexity: O(n) in worst case, where n is the number of nodes in the tree
+# In the worst case scenario, the first leaf might be at the maximum depth, requiring us to visit 
+# most nodes. However, we often terminate early once we find the first leaf.
+
+
