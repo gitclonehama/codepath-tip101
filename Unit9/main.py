@@ -338,3 +338,47 @@ def min_depth(root):
 # most nodes. However, we often terminate early once we find the first leaf.
 
 
+""" 
+Problem 8: Odd-Even Level Sum Difference in Binary Tree
+Given the root of a binary tree, return the difference between the sum of all node values in odd levels and sum of all node values in even levels.
+
+Understand:
+    - Need to track the level of each node (root is at level 1)
+    - Calculate sum of values at odd levels and even levels separately
+    - Return the difference: odd_sum - even_sum
+
+Plan:
+    - Use BFS with a queue to traverse the tree level by level
+    - Keep track of the current level
+    - Add values to odd_sum or even_sum based on level number
+"""
+# Implement
+def level_difference(root):
+    if not root:
+        return 0
+    
+    queue = deque([(root, 1)])  # Store (node, level) pairs
+    odd_sum = 0
+    even_sum = 0
+    
+    while queue:
+        node, level = queue.popleft()
+        
+        # Add to appropriate sum based on level
+        if level % 2 == 1:  # Odd level
+            odd_sum += node.val
+        else:               # Even level
+            even_sum += node.val
+        
+        # Add children to queue with incremented level
+        if node.left:
+            queue.append((node.left, level + 1))
+        if node.right:
+            queue.append((node.right, level + 1))
+    
+    return odd_sum - even_sum
+
+# Time Complexity: O(n) where n is the number of nodes in the tree
+# We visit each node exactly once and perform constant time operations for each node.
+
+
