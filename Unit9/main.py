@@ -66,3 +66,49 @@ def is_symmetric(root):
 # Time Complexity: O(n) where n is the number of nodes in the tree
 
 
+""" 
+Problem 2: Root-to-Leaf Paths
+Given the root of a binary tree, return a list of all root-to-leaf paths in any order.
+A leaf is a node with no children.
+
+Understand:
+    - What format should the paths be in? String format with "->" as separator?
+    - Should we handle empty trees specially? What should be returned?
+
+Plan:
+    - Use a depth-first search (DFS) approach with backtracking
+    - Maintain a current path as we traverse the tree
+    - When we reach a leaf node (no children), add the current path to our result
+    - Use recursion to explore all possible paths from root to leaves
+"""
+# Implement
+def binary_tree_paths(root):
+    if not root:
+        return []
+    
+    paths = []
+    
+    def dfs(node, path):
+        # Add current node to path
+        if path:
+            path += "->" + str(node.val)
+        else:
+            path = str(node.val)
+        
+        # If leaf node (no children), add path to results
+        if not node.left and not node.right:
+            paths.append(path)
+            return
+        
+        # Recursively explore children
+        if node.left:
+            dfs(node.left, path)
+        if node.right:
+            dfs(node.right, path)
+    
+    dfs(root, "")
+    return paths
+
+# Time Complexity: O(n) to visit all nodes, with extra string operations making it O(n²) in total
+
+
