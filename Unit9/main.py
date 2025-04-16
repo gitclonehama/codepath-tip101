@@ -153,3 +153,45 @@ def min_diff_in_bst(root):
 # Time Complexity: O(n) where n is the number of nodes in the BST
 
 
+""" 
+Problem 4: Increasing Order Search Tree
+Given the root of a binary search tree, rearrange the tree in in-order so that the leftmost node of the tree is now the root of tree and every node has no left child and only one right child.
+
+Understand:
+    - Do we need to create new nodes or reuse existing ones?
+    - Should we modify the tree in-place or create a new structure?
+
+Plan:
+    - Perform an in-order traversal to visit nodes in ascending order
+    - Create a dummy node to start the new tree
+    - As we visit each node, set it as the right child of our current position
+    - Reset each node's left child to None
+    - Advance our current position pointer
+"""
+# Implement
+def increasing_bst(root):
+    dummy = TreeNode()  # Dummy node to start with
+    current = dummy
+    
+    def inorder(node):
+        nonlocal current
+        if not node:
+            return
+        
+        # Process left subtree first
+        inorder(node.left)
+        
+        # Process current node
+        node.left = None          # Remove left child
+        current.right = node      # Attach to right of our current position
+        current = node            # Update current position
+        
+        # Process right subtree
+        inorder(node.right)
+    
+    inorder(root)
+    return dummy.right  # Return the actual root (skip dummy)
+
+# Time Complexity: O(n) where n is the number of nodes in the BST
+
+
