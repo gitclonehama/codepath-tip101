@@ -195,3 +195,57 @@ def increasing_bst(root):
 # Time Complexity: O(n) where n is the number of nodes in the BST
 
 
+""" 
+Problem 5: Equal Tree Split
+Given the root of a binary tree, return True if removing an edge between two nodes can split the tree into two trees with an equal number of nodes. Return False otherwise.
+
+Understand:
+    - Can any edge be removed, or just edges from the root?
+    - What happens if the tree has an odd number of nodes?
+
+Plan:
+    - Count total nodes in the tree first
+    - If total is odd, return False (can't split evenly)
+    - Traverse the tree again, calculating size of each subtree
+    - If any subtree has exactly half the total nodes, return True
+"""
+# Implement
+def can_split(root):
+    # Count total nodes
+    def count_nodes(node):
+        if not node:
+            return 0
+        return 1 + count_nodes(node.left) + count_nodes(node.right)
+    
+    total_nodes = count_nodes(root)
+    
+    # If odd number of nodes, can't split evenly
+    if total_nodes % 2 != 0:
+        return False
+    
+    target = total_nodes // 2
+    found = False
+    
+    # Check if any subtree has exactly half the nodes
+    def size_and_check(node):
+        nonlocal found
+        if not node or found:
+            return 0
+        
+        left_size = size_and_check(node.left)
+        right_size = size_and_check(node.right)
+        
+        subtree_size = 1 + left_size + right_size
+        
+        # Check if removing edge above this node would create equal split
+        if subtree_size == target:
+            found = True
+        
+        return subtree_size
+    
+    size_and_check(root)
+    return found
+
+# Time Complexity: O(n) where n is the number of nodes in the tree
+
+
